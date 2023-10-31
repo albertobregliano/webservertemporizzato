@@ -16,12 +16,10 @@ func main() {
 	port := *flag.String("p", "8080", "porta tcp da usare")
 	flag.Parse()
 
-	log.Println(timeout)
-
 	ctx, cancel := context.WithTimeout(context.Background(), timeout)
 	defer cancel()
 
-	str := randomString()
+	var str = randomString()
 
 	router := http.DefaultServeMux
 	router.HandleFunc("/"+str, func(w http.ResponseWriter, r *http.Request) {
